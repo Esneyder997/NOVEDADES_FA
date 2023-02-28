@@ -1,0 +1,25 @@
+name: Build and Deploy ASP.NET Web Forms app
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.1
+
+    - name: Build with MSBuild
+      run: msbuild.exe Novedades_FA.sln /p:Configuration=Release
+
+    - name: Publish with MSDeploy
+      run: msdeploy.exe -verb:sync -source:package=Novedades_FA.zip -dest:auto,computerName=localhost
+
+    - name: Restart IIS
+      run: iisreset.exe
