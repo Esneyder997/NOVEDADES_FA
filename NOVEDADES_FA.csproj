@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="VISUAL\CSS\menuscroll.css" />
+    <Content Include="VISUAL\CSS\menuscroll.js" />
+    <Content Include="VISUAL\CSS\PRINCIPAL.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CONTROLADORES\" />
-    <Folder Include="VISUAL\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
