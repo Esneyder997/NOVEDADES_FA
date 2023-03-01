@@ -9,7 +9,7 @@ namespace NOVEDADES_FA.BD
 {
     public class conexBD
     {
-        private string connectionString = "Data Source=DESKTOP-Q0BLKPB; Database=DATAFAMILIASENACCION; User ID=Schneyder; Password=Figue@997;";
+        private string connectionString = "Data Source=DESKTOP-Q0BLKPB; Database=DATAFAMILIASENACCION; User ID=sa; Password=Figue@997;";
 
         public DataTable Consultas(string scriptConsulta)
         {
