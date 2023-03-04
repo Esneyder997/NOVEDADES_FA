@@ -12,9 +12,18 @@ namespace PROYECTOGRADO2023.CONTROLADORES
     {
         conexBD cbd = new conexBD();
 
-        public string MODIFICAR_usuario(string nombre_titular, Int64 cedula, string veredad, string barrio, Int64 telefono, int codigo, int id_titular)
+        public string MODIFICAR_usuariogrid(string nombre_titular, Int64 cedula, string veredad, string barrio, Int64 telefono, int codigo, int id_titular)
         {
             string sql = "UPDATE NOVEDAD_PRINCIPAL SET nombre_titular = '" + nombre_titular + "', numero_documento = '" + cedula + "', barrio = '" + veredad + "', veredad = '" + barrio + "', codigo = '" + codigo + "', celular = '" + telefono + "' WHERE titualar_id = " + id_titular + "";
+            string tb_usuario = cbd.CRUD(sql);
+            return tb_usuario;
+        }
+
+
+
+        public string MODIFICAR_usuarioexcel(Int64 cedula, string veredad, string barrio, Int64 telefono)
+        {
+            string sql = "UPDATE NOVEDAD_PRINCIPAL SET barrio = '" + barrio + "', vereda = '" + veredad + "', celular = '" + telefono + "' WHERE numero_documento = " + cedula + "";
             string tb_usuario = cbd.CRUD(sql);
             return tb_usuario;
         }
