@@ -72,17 +72,7 @@
            
             <div class="group">
                 <asp:Label ID="Label12" runat="server" Text="SELECCIONE TIPO DE NOVEDAD"></asp:Label>
-                  <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                    <asp:ListItem>__SELECCIONE_LA_NOVEDAD__</asp:ListItem>
-                    <asp:ListItem>CAMBIO_TITULAR</asp:ListItem>
-                    <asp:ListItem>CAMBIO_GRUPO_POBLACIONAL</asp:ListItem>
-                    <asp:ListItem>TRASLADO_DE_MUNICIPIO</asp:ListItem>
-                    <asp:ListItem>CAMBIO_EN_DATOS_PERSONALES</asp:ListItem>
-                    <asp:ListItem>ENTRADA_DE_BENEFICIARIO</asp:ListItem>
-                    <asp:ListItem>RETIRO_DE_BENEFICIARIO</asp:ListItem>
-                    <asp:ListItem>RETIRO_DE_FAMILIA_O_BENEFICIARIO</asp:ListItem>
-                    <asp:ListItem>NOVEDADES_SALUD</asp:ListItem>
-                </asp:DropDownList>
+                  <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
                 </div>
 
             <div class="group">
@@ -170,10 +160,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="veredad">
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" Text='<%# Bind("veredad") %>' ID="TextBox5"></asp:TextBox>
+                                <asp:TextBox runat="server" Text='<%# Bind("vereda") %>' ID="TextBox5"></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("veredad") %>' ID="Label5"></asp:Label>
+                                <asp:Label runat="server" Text='<%# Bind("vereda") %>' ID="Label5"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="codigo">
@@ -194,10 +184,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="titualar_id">
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" Text='<%# Bind("titualar_id") %>' ID="TextBox8"></asp:TextBox>
+                                <asp:TextBox runat="server" Text='<%# Bind("titular_id") %>' ID="TextBox8"></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("titualar_id") %>' ID="Label8"></asp:Label>
+                                <asp:Label runat="server" Text='<%# Bind("titular_id") %>' ID="Label8"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
