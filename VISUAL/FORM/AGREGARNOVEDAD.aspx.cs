@@ -156,7 +156,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                                     x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DEL TITULAR " + nombre;
                                     x.Cells[44, 1] = "CAMBIO DE TITULAR ";
-                                    sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\cambio_titular");
+                                    sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\"+ numero_documento + "");
                                     sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
                                     excelcambiotitular.Quit();
                                 }
@@ -422,15 +422,16 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             //xcambiogrupo.PrintPreview();
                             cerrarSEGUNDOPLANO();
                         }
-                        else if (DropDownList1.SelectedItem.Text == "CAMBIO TITULAR")
+                        else if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                         {
-                            Microsoft.Office.Interop.Excel.Workbook sheettitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\cambio_titular.xlsx");
+                            Microsoft.Office.Interop.Excel.Workbook sheettitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + ".xlsx");
                             Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
                             xcambiotitular.PrintOut(1, true);
                             excelcambiotitular.Quit();
+                            cerrarSEGUNDOPLANO();
                             Page.Response.Redirect(Page.Request.Url.ToString(), true);
                             //xcambiotitular.PrintPreview();
-                            cerrarSEGUNDOPLANO();
+                            
                         }
                         else if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
                         {
@@ -443,8 +444,9 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             //x.PrintPreview();
                             excel.Quit();
                             excelretiros.Quit();
-                            Page.Response.Redirect(Page.Request.Url.ToString(), true);
                             cerrarSEGUNDOPLANO();
+                            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                            
 
                         }
                         else if (DropDownList1.SelectedItem.Text == "RETIRO DE FAMILIA")
@@ -454,11 +456,12 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             Microsoft.Office.Interop.Excel.Worksheet xcambioretirosnucleo = excelretirosnucleo.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
                             xcambioretirosnucleo.PrintOut(1, true);
                             excelretirosnucleo.Quit(); x.PrintOut(1, true);
+                            cerrarSEGUNDOPLANO();
                             Page.Response.Redirect(Page.Request.Url.ToString(), true);
 
 
                             //xcambioretirosnucleo.PrintPreview();
-                            cerrarSEGUNDOPLANO();
+                            
                         }
                         else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
                         {
@@ -468,8 +471,9 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             xtraslados.PrintOut(1, true);
                             x.PrintOut(1, true);
                             exceltraslados.Quit();
-                            Page.Response.Redirect(Page.Request.Url.ToString(), true);
                             cerrarSEGUNDOPLANO();
+                            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                            
                         }
 
                         x.PrintOut(1, true);
@@ -485,14 +489,33 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
         public void cerrarSEGUNDOPLANO()
         {
-            Process[]
-            processes = Process.GetProcessesByName("Microsoft Excel");
+            //Process[]
+            //processes = Process.GetProcessesByName("EXCEL.EXE");
 
-            // Cerrar el proceso
-            foreach (Process process in processes)
-            {
-                process.Kill();
-            }
+            //// Cerrar el proceso
+            //foreach (Process process in processes)
+            //{
+            //    process.Kill();
+            //}
+
+            // Buscar todos los procesos de Excel que estén en ejecución
+            Process[] processes = Process.GetProcessesByName("EXCEL");
+
+               // Cerrar los procesos de Excel
+               foreach (Process process in processes)
+               {
+                  try 
+                  {
+                    process.CloseMainWindow();
+                    process.WaitForExit();
+                    process.Dispose();
+                  }
+                  catch (Exception ex) 
+                  {
+                    // Manejar cualquier excepción que pueda ocurrir
+                    Console.WriteLine(ex.Message);
+                  }
+               }
         }
 
         protected void TextBox10_TextChanged(object sender, EventArgs e)
