@@ -64,15 +64,15 @@ namespace NOVEDADES_FA.VISUAL.FORM
             REGISTROS reg = new REGISTROS();
             foreach (GridViewRow row in GridView1.Rows)
             {
-                string nombre = row.Cells[9].Text;
-                Int64 cedula = Convert.ToInt64(row.Cells[4].Text);
+                string nombre = row.Cells[6].Text;
+                Int64 cedula = Convert.ToInt64(row.Cells[5].Text);
                 //int codigo = Convert.ToInt32(row.Cells[2].Text);
-                string barrio = row.Cells[1].Text;
-                string vereda = row.Cells[0].Text;
-                Int64 celular = Convert.ToInt64(row.Cells[3].Text);
-                int codigo = Convert.ToInt32(row.Cells[10].Text);
+                //string barrio = row.Cells[1].Text;
+                //string vereda = row.Cells[0].Text;
+                //Int64 celular = Convert.ToInt64(row.Cells[3].Text);
+                int codigo = Convert.ToInt32(row.Cells[0].Text);
 
-                string RTA = reg.Registrar_BIGDATA(nombre, cedula, vereda, barrio, celular, codigo);
+                string RTA = reg.Registrar_BIGDATA(nombre, cedula,codigo);
 
                 if (RTA == "SI")
                 {

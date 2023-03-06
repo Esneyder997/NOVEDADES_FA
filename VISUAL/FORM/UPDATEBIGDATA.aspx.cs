@@ -56,10 +56,14 @@ namespace NOVEDADES_FA.VISUAL.FORM
             MODIFICAR mod = new MODIFICAR();
             foreach (GridViewRow row in GridView1.Rows)
             {
-                int codigo = Convert.ToInt32(row.Cells[0].Text);
-                Int64 cedula = Convert.ToInt64(row.Cells[1].Text);
 
-                string rta = mod.Actualizar_codigos(codigo, cedula);
+                string vereda = row.Cells[0].Text;
+                string barrio = row.Cells[1].Text;
+                Int64 telefono = Convert.ToInt64(row.Cells[2].Text);
+                Int64 cedula = Convert.ToInt64(row.Cells[3].Text);
+                
+
+                string rta = mod.MODIFICAR_usuarioexcel(cedula,vereda, barrio,telefono);
                 if (rta == "SI")
                 {
 

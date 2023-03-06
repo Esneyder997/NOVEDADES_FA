@@ -36,7 +36,18 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                DataTable tpN = new DataTable();
+                tpN = consult.cargarNOVEDADES();
+               
+                DropDownList1.AppendDataBoundItems = true;
+                DropDownList1.Items.Insert(0, new ListItem("SELECCIONE UNA OPCION", "0"));
+                DropDownList1.DataValueField = "id";
+                DropDownList1.DataTextField = "nombre_novedad";
+                DropDownList1.DataSource = tpN;
+                DropDownList1.DataBind();
+            }
         }
 
         public void nombreglobal()
@@ -60,6 +71,9 @@ namespace NOVEDADES_FA.VISUAL.FORM
             int codigo = 0;
             Int64 telefono = 0;
             string nombrenna = "";
+
+           
+
 
             if (DropDownList1.SelectedValue == "__SELECCIONE_LA_NOVEDAD__")
             {
@@ -341,7 +355,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
             Int64 celular = Convert.ToInt64(((TextBox)(row.Cells[7].Controls[1])).Text);
             int id_codigo = Convert.ToInt32(((TextBox)(row.Cells[8].Controls[1])).Text);
 
-            string RTA = control.MODIFICAR_usuario(nombre, numero_doc, barrio, veredad, celular, codigo, id_codigo);
+            string RTA = control.MODIFICAR_usuariogrid(nombre, numero_doc, barrio, veredad, celular, codigo, id_codigo);
             if (RTA == "SI")
             {
 

@@ -8,7 +8,49 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-
+   <%--  <style>
+      /* Estilos para centrar el contenido */
+      html,
+      body {
+        height: 100%;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f7f7f7;
+      }
+      /* Estilos para el contenedor de los controles */
+      .container {
+        text-align: center;
+        background-color: white;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      /* Estilos para los controles */
+      .form-control {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0062cc;
+      }
+      .grid-view {
+        margin-top: 20px;
+      }
+    </style>--%>
 
 
 </head>

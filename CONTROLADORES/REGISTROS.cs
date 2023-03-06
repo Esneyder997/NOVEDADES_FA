@@ -41,7 +41,7 @@ namespace NOVEDADES_FA.CONTROLADORES
 
         public DataTable FILTROS()
         {
-            string sql = string.Format(@"SELECT ph.nombre_titular, ph.numero_documento, ph.barrio, ph.codigo, ph.veredad, ph.celular, ph.titualar_id  FROM NOVEDAD_PRINCIPAL AS ph INNER JOIN NOVEDAD_PRINCIPAL AS p ON ph.titualar_id = p.titualar_id  WHERE ph.numero_documento LIKE '{0}%'", this.cedula, " ORDER by ph.nombre_titular, ph.numero_documento, ph.codigo, ph.barrio, ph.veredad, ph.celular");
+            string sql = string.Format(@"SELECT ph.nombre_titular, ph.numero_documento, ph.barrio, ph.codigo, ph.vereda, ph.celular, ph.titular_id  FROM NOVEDAD_PRINCIPAL AS ph INNER JOIN NOVEDAD_PRINCIPAL AS p ON ph.titular_id = p.titular_id  WHERE ph.numero_documento LIKE '{0}%'", this.cedula, " ORDER by ph.nombre_titular, ph.numero_documento, ph.codigo, ph.barrio, ph.vereda, ph.celular");
             DataTable tabla1 = cbd.Consultas(sql);
             return tabla1;
         }
@@ -53,10 +53,16 @@ namespace NOVEDADES_FA.CONTROLADORES
             return tabla1;
         }
 
-        public string Registrar_BIGDATA(string nombre_titular, Int64 cedula, string veredad, string barrio, Int64 telefono, int codigo)
+        public string Registrar_BIGDATA(string nombre_titular, Int64 cedula, int codigo)
         {
-            string sql = string.Format(@"INSERT INTO NOVEDAD_PRINCIPAL (nombre_titular,numero_documento,barrio,veredad,celular,codigo) values ('" + nombre_titular + "','" + cedula + "','" + barrio + "','" + veredad + "','" + telefono + "','" + codigo + "')");
+            string sql = string.Format(@"INSERT INTO NOVEDAD_PRINCIPAL (nombre_titular,numero_documento,codigo ) values ('" + nombre_titular + "','" + cedula + "','" + codigo + "')");
             string tabla1 = cbd.CRUD(sql);
+            return tabla1;
+        }
+
+        public DataTable cargarNOVEDADES() {
+            string sql = string.Format(@"SELECT id, nombre_novedad FROM TIPO_NOVEDAD");
+            DataTable tabla1 = cbd.Consultas(sql);
             return tabla1;
         }
     }

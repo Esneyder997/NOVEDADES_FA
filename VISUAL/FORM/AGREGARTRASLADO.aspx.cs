@@ -29,7 +29,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
             Int64 celular = Convert.ToInt64(TextBox6.Text);
             int codigo = Convert.ToInt32(TextBox5.Text);
 
-            string RTA = reg.Registrar_BIGDATA(nombre, cedula, vereda, barrio, celular, codigo);
+            string RTA = reg.Registrar_BIGDATA(nombre, cedula, codigo);
 
             if (RTA == "SI")
             {
