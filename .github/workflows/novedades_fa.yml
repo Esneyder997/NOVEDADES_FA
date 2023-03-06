@@ -1,0 +1,25 @@
+name: Build and Deploy NOVEDADES_FA
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild.exe path
+        uses: microsoft/setup-msbuild@v1.0.2
+      - name: Restore NuGet packages
+        run: nuget restore NOVEDADES_FA.sln
+      - name: Build the project
+        run: msbuild /p:Configuration=Release /p:OutputPath=output NOVEDADES_FA.sln
+      - name: Publish the output to IIS website
+        uses: microsoft/iis-web-app-deploy@v1
+        with:
+          app-name: 'Default Web Site/NOVEDADES_FA'
+          package: './output/NOVEDADES_FA.zip'
+          iis-web-site: 'Default Web Site'
