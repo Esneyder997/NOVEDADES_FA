@@ -1,0 +1,48 @@
+name: Build, Test and Deploy ASP.NET Web Forms app
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.1
+
+    - name: Build with MSBuild
+      run: msbuild.exe Novedades_FA.sln /p:Configuration=Release
+
+    - name: Publish with MSDeploy
+      run: msdeploy.exe -verb:sync -source:package=Novedades_FA.zip -dest:auto,computerName=localhost
+
+    - name: Restart IIS
+      run: iisreset.exe
+
+    - name: Run Tests
+      run: vstest.console.exe Novedades_FA.Tests.dll
+
+    - name: Code Review
+      uses: reviewdog/action-eslint@v1.x
+      with:
+        eslint_github_token: ${{ secrets.GITHUB_TOKEN }}
+        eslint_level: warning
+
+    - name: Send Notifications
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: "Your ASP.NET Web Forms app was successfully deployed and tested!"
+        
+    - name: Security Analysis
+      uses: shiftleftsecurity/action-sast@v2
+      with:
+        languages: dotnet
+        analysisMode: fast
+        apiKey: ${{ secrets.SHIFTLEFT_API_KEY }}
