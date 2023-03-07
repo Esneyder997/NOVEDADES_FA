@@ -149,16 +149,17 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                                 if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                                 {
+
                                     Microsoft.Office.Interop.Excel.Application excelcambiotitular = new Microsoft.Office.Interop.Excel.Application();
                                     Microsoft.Office.Interop.Excel.Workbook sheetcambiotitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambio de titular.xlsx");
                                     Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
 
                                     x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DEL TITULAR " + nombre;
                                     x.Cells[44, 1] = "CAMBIO DE TITULAR ";
                                     sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\"+ numero_documento + "");
                                     sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
                                     excelcambiotitular.Quit();
+
                                 }
                                 else if (DropDownList1.SelectedItem.Text == "CAMBIO DE GRUPO PROBLACIONAL")
                                 {
@@ -499,7 +500,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
             //}
 
             // Buscar todos los procesos de Excel que estén en ejecución
-            Process[] processes = Process.GetProcessesByName("EXCEL");
+            Process[] processes = Process.GetProcessesByName("EXCEL.EXE");
 
                // Cerrar los procesos de Excel
                foreach (Process process in processes)
