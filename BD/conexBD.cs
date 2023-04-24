@@ -12,7 +12,7 @@ namespace NOVEDADES_FA.BD
 
         protected string sql;
         
-        private string connectionString = "Data Source=familiasenaccion.database.windows.net; Database=NOVEDADES_FA; User ID=Esneyder; Password=Figueroa_1997;";
+        private string connectionString = "Data Source=DESKTOP-LBO94RD\\SQLEXPRESS; Database=NOVEDADES_FA; User ID=sa; Password=Figue_997;";
 
         public DataTable Consultas(string scriptConsulta)
         {

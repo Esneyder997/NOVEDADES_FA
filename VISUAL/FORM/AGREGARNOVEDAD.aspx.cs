@@ -149,17 +149,33 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                                 if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                                 {
-
                                     Microsoft.Office.Interop.Excel.Application excelcambiotitular = new Microsoft.Office.Interop.Excel.Application();
                                     Microsoft.Office.Interop.Excel.Workbook sheetcambiotitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambio de titular.xlsx");
                                     Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
 
-                                    x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DEL TITULAR " + nombre;
-                                    x.Cells[44, 1] = "CAMBIO DE TITULAR ";
-                                    sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\"+ numero_documento + "");
-                                    sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
-                                    excelcambiotitular.Quit();
 
+                                    foreach (GridViewRow gridnna in GridView2.Rows)
+                                    {
+                                        if (gridnna.RowType == DataControlRowType.DataRow)
+                                        {
+                                            checkanna = (CheckBox)gridnna.FindControl("CheckBox4");
+                                            if (checkanna.Checked)
+                                            {
+                                                nombrenna = ((Label)(gridnna.Cells[1].Controls[1])).Text;
+
+                                                xcambiotitular.Cells[6, 6] = fecha_hoy;
+                                                xcambiotitular.Cells[21, 4] = nombre;
+                                                xcambiotitular.Cells[22, 4] = numero_documento;
+                                                xcambiotitular.Cells[23, 4] = codigo;
+                                                xcambiotitular.Cells[24, 5] = nombrenna;
+                                                x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DEL TITULAR " + nombre;
+                                                x.Cells[44, 1] = "CAMBIO DE TITULAR ";
+                                                sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
+                                                sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
+                                                excelcambiotitular.Quit();
+                                            }
+                                        }
+                                    }
                                 }
                                 else if (DropDownList1.SelectedItem.Text == "CAMBIO DE GRUPO PROBLACIONAL")
                                 {
@@ -580,10 +596,23 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 Label10.Visible = true;
                 DropDownList2.Visible = true;
                 GridView2.Visible = true;
-
                 Label9.Visible = false;
                 Label14.Visible = false;
                 TextBox9.Visible = false;
+                TextBox12.Visible = false;
+            }
+            if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
+
+            {
+
+                Label11.Visible = true;
+                TextBox10.Visible = true;
+                Label10.Visible = true;
+                DropDownList2.Visible = true;
+                GridView2.Visible = true;
+                Label9.Visible = false;
+                TextBox9.Visible = false;
+                Label14.Visible = false;
                 TextBox12.Visible = false;
             }
             else
