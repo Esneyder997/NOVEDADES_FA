@@ -21,7 +21,7 @@
         }  
         .Popup  
         {  
-            background-color: #FFFFFF;  
+            background-color: #FFFFFF; 
             border-width: 3px;  
             border-style: solid;  
             border-color: black;  
@@ -76,12 +76,14 @@
                 </div>
 
             <div class="group">
-                <asp:Label ID="Label10" runat="server" Text="QUE DATOS SOLICITA CAMBIAR" Visible="False"></asp:Label>
+                <asp:Label ID="Label10" runat="server" Text="QUE TIPO SOLICITUD ?" Visible="False"></asp:Label>
                 <asp:DropDownList ID="DropDownList2" runat="server" Visible="False" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
-                    <asp:ListItem>__SELECCIONE CAMBIO__</asp:ListItem>
+                    <asp:ListItem>__CAMBIO_DATOS_PERSONALES__</asp:ListItem>
                     <asp:ListItem>CAMBIO_DOCUMENTO</asp:ListItem>
                     <asp:ListItem>CAMBIO_FECHA_DE_NACIMIENTO</asp:ListItem>
                     <asp:ListItem>CAMBIO_DE_APELLIDOS</asp:ListItem>
+                </asp:DropDownList><asp:DropDownList runat="server">
+                    <asp:ListItem>__TIPO_CAMBIO_TITUTAL__</asp:ListItem>
                 </asp:DropDownList>
                 </div>
 
@@ -214,7 +216,7 @@
                                 <asp:Label ID="Label13" runat="server" Text='<%# Bind("nombre_titular") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="titualar_id" HeaderText="titualar_id" />
+                        <asp:BoundField DataField="titular_id" HeaderText="titular_id" />
                     </Columns>
                 </asp:GridView>
 

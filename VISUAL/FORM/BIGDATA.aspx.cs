@@ -61,27 +61,27 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            REGISTROS reg = new REGISTROS();
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-                string nombre = row.Cells[6].Text;
-                Int64 cedula = Convert.ToInt64(row.Cells[5].Text);
-                //int codigo = Convert.ToInt32(row.Cells[2].Text);
-                //string barrio = row.Cells[1].Text;
-                //string vereda = row.Cells[0].Text;
-                //Int64 celular = Convert.ToInt64(row.Cells[3].Text);
-                int codigo = Convert.ToInt32(row.Cells[0].Text);
+            //REGISTROS reg = new REGISTROS();
+            //foreach (GridViewRow row in GridView1.Rows)
+            //{
+            //    string nombre = row.Cells[5].Text;
+            //    Int64 cedula = Convert.ToInt64(row.Cells[0].Text);
+            //    //int codigo = Convert.ToInt32(row.Cells[2].Text);
+            //    //string barrio = row.Cells[1].Text;
+            //    //string vereda = row.Cells[0].Text;
+            //    //Int64 celular = Convert.ToInt64(row.Cells[3].Text);
+            //    int codigo = Convert.ToInt32(row.Cells[0].Text);
 
-                string RTA = reg.Registrar_BIGDATA(nombre, cedula,codigo);
+            //    string RTA = reg.Registrar_BIGDATA(nombre, cedula, codigo);
 
-                if (RTA == "SI")
-                {
-                    string mss = "REGISTRO REALIZADO ";
-                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + mss + "');", true);
-                }
+            //    if (RTA == "SI")
+            //    {
+            //        string mss = "REGISTRO REALIZADO ";
+            //        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + mss + "');", true);
+            //    }
 
 
-            }
+            //}
         }
 
     }

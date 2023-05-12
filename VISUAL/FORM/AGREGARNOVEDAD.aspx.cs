@@ -153,16 +153,6 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                     Microsoft.Office.Interop.Excel.Workbook sheetcambiotitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambio de titular.xlsx");
                                     Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
 
-
-                                    foreach (GridViewRow gridnna in GridView2.Rows)
-                                    {
-                                        if (gridnna.RowType == DataControlRowType.DataRow)
-                                        {
-                                            checkanna = (CheckBox)gridnna.FindControl("CheckBox4");
-                                            if (checkanna.Checked)
-                                            {
-                                                nombrenna = ((Label)(gridnna.Cells[1].Controls[1])).Text;
-
                                                 xcambiotitular.Cells[6, 6] = fecha_hoy;
                                                 xcambiotitular.Cells[21, 4] = nombre;
                                                 xcambiotitular.Cells[22, 4] = numero_documento;
@@ -173,9 +163,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                                 sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
                                                 sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
                                                 excelcambiotitular.Quit();
-                                            }
-                                        }
-                                    }
+                                     
                                 }
                                 else if (DropDownList1.SelectedItem.Text == "CAMBIO DE GRUPO PROBLACIONAL")
                                 {
@@ -574,6 +562,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
+                DropDownList2.Visible = false;
 
             }
             else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
@@ -586,6 +575,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 TextBox10.Visible = false;
 
                 Label10.Visible = false;
+                DropDownList2.Visible = false;
                 DropDownList2.Visible = false;
             }
             else if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
@@ -600,33 +590,35 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 Label14.Visible = false;
                 TextBox9.Visible = false;
                 TextBox12.Visible = false;
+                DropDownList2.Visible = false;
             }
             if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
 
             {
 
-                Label11.Visible = true;
-                TextBox10.Visible = true;
-                Label10.Visible = true;
-                DropDownList2.Visible = true;
+                Label11.Visible = false;
+                TextBox10.Visible = false;
+                Label10.Visible = false;
+                DropDownList2.Visible = false;
                 GridView2.Visible = true;
                 Label9.Visible = false;
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
+                DropDownList2.Visible = true;
             }
-            else
-            {
-                Label11.Visible = false;
-                Label9.Visible = false;
-                TextBox10.Visible = false;
-                TextBox12.Visible = false;
-                TextBox9.Visible = false;
-                Label10.Visible = false;
-                Label14.Visible = false;
-                DropDownList2.Visible = false;
-                GridView2.Visible = false;
-            }
+            //else
+            //{
+            //    Label11.Visible = false;
+            //    Label9.Visible = false;
+            //    TextBox10.Visible = false;
+            //    TextBox12.Visible = false;
+            //    TextBox9.Visible = false;
+            //    Label10.Visible = false;
+            //    Label14.Visible = false;
+            //    DropDownList2.Visible = false;
+            //    GridView2.Visible = false;
+            //}
         }
 
         protected void Button4_Click(object sender, EventArgs e)
