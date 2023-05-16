@@ -86,7 +86,7 @@
                 </asp:DropDownList>
 
 
-                <asp:DropDownList ID="DropDownList3" runat="server">
+                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                     <asp:ListItem>__CAMBIO:_TIPO_TITULAR__</asp:ListItem>
                     <asp:ListItem>FALLECIMIENTO</asp:ListItem>
                     <asp:ListItem>ENFERMEDA GRAVE O INVALIDEZ</asp:ListItem>
@@ -242,6 +242,16 @@
                                 <asp:Label ID="Label13" runat="server" Text='<%# Bind("nombre_titular") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="numero_documento">
+                            <EditItemTemplate>
+                                <asp:TextBox runat="server" ID="TextBox2" Text='<%# Bind("numero_documento") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label runat="server" ID="Label2" Text='<%# Bind("numero_documento") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
                         <asp:BoundField DataField="titular_id" HeaderText="titular_id" />
                     </Columns>
                 </asp:GridView>
@@ -253,7 +263,7 @@
             <div class="group">
              <asp:ScriptManager ID="ScriptManager1" runat="server">
 		     </asp:ScriptManager>
-            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="INGRESAR TITULAR" />
+            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Visible="false" Text="INGRESAR TITULAR" />
 
 		    <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panl1" TargetControlID="Button3"
 			CancelControlID="Button4" BackgroundCssClass="Background">

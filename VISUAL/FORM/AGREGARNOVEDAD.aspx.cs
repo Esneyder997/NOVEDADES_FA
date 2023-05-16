@@ -73,6 +73,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
             int codigo = 0;
             Int64 telefono = 0;
             string nombrenna = "";
+            int numero_documentonna = 0; 
 
            
 
@@ -151,15 +152,20 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                                 if (DropDownList1.SelectedItem.Text == "CAMBIO EN DATOS PERSONALES" || DropDownList1.SelectedItem.Text == "RETIRO_DE_BENEFICIARIO" || DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                                 {
+
                                     foreach (GridViewRow gridnna in GridView2.Rows)
                                     {
+
                                         if (gridnna.RowType == DataControlRowType.DataRow)
                                         {
+
                                             checkanna = (CheckBox)gridnna.FindControl("CheckBox4");
+
                                             if (checkanna.Checked)
                                             {
-                                                nombrenna = ((Label)(gridnna.Cells[1].Controls[1])).Text;
 
+                                                nombrenna = ((Label)(gridnna.Cells[1].Controls[1])).Text;
+                                                numero_documentonna = Convert.ToInt32( ((Label)(gridnna.Cells[2].Controls[1])).Text);
 
                                                 if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                                                 {
@@ -172,10 +178,11 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                                     xcambiotitular.Cells[22, 4] = numero_documento;
                                                     xcambiotitular.Cells[23, 4] = codigo;
                                                     xcambiotitular.Cells[24, 5] = nombrenna;
-                                                    xcambiotitular.Cells[24, 5] = nombrenna;
+                                                    xcambiotitular.Cells[25, 2] = numero_documentonna;
 
                                                     if (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA")
                                                     {
+
                                                         x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA" + nombre;
                                                         x.Cells[44, 1] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA";
 
@@ -187,7 +194,6 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                                         {
                                                             xcambiotitular.Cells[26, 2] = "tiene custodia del o los NNA inscritos en el programa ";
                                                         }
-
                                                     }
 
                                                     sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
@@ -586,6 +592,8 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 TextBox12.Visible = false;
                 DropDownList3.Visible = false;
 
+                Label15.Visible = false;
+                DropDownList4.Visible = false;
 
             }
             else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
@@ -631,6 +639,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 Label15.Visible = true;
                 DropDownList4.Visible = true;
 
+                
             }
             //else
             //{
@@ -659,8 +668,21 @@ namespace NOVEDADES_FA.VISUAL.FORM
             cargarFILTRO();
         }
 
-      
-    
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Button3.Visible = (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA") ? true : false;
+
+
+            //if (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA")
+            //{
+            //    Button3.Visible = true;
+            //}
+            //else
+            //{
+            //    Button3.Visible = false;
+            //}
+        }
     }
 
 }
