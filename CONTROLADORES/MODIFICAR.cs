@@ -14,7 +14,7 @@ namespace PROYECTOGRADO2023.CONTROLADORES
 
         public string MODIFICAR_usuariogrid(string nombre_titular, Int64 cedula, string veredad, string barrio, Int64 telefono, int codigo, int id_titular)
         {
-            string sql = "UPDATE NOVEDAD_PRINCIPAL SET nombre_titular = '" + nombre_titular + "', numero_documento = '" + cedula + "', barrio = '" + veredad + "', veredad = '" + barrio + "', codigo = '" + codigo + "', celular = '" + telefono + "' WHERE titualar_id = " + id_titular + "";
+            string sql = "UPDATE NOVEDAD_PRINCIPAL SET nombre_titular = '" + nombre_titular + "', numero_documento = '" + cedula + "', barrio = '" + veredad + "', vereda = '" + barrio + "', codigo = '" + codigo + "', celular = '" + telefono + "' WHERE titular_id = " + id_titular + "";
             string tb_usuario = cbd.CRUD(sql);
             return tb_usuario;
         }

@@ -47,13 +47,15 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 DropDownList1.DataTextField = "nombre_novedad";
                 DropDownList1.DataSource = tpN;
                 DropDownList1.DataBind();
+
+
+                Label10.Visible = false;
+                DropDownList2.Visible = false;
+                DropDownList3.Visible = false;
+                DropDownList4.Visible = false;
             }
         }
 
-        public void nombreglobal()
-        {
-
-        }
         protected void Button1_Click(object sender, EventArgs e)
         {
 
@@ -147,82 +149,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                 x.Cells[8, 10] = fecha_hoy;
                                 x.Cells[41, 10] = fecha_hoy;
 
-                                if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
-                                {
-                                    Microsoft.Office.Interop.Excel.Application excelcambiotitular = new Microsoft.Office.Interop.Excel.Application();
-                                    Microsoft.Office.Interop.Excel.Workbook sheetcambiotitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambio de titular.xlsx");
-                                    Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
-                                                xcambiotitular.Cells[6, 6] = fecha_hoy;
-                                                xcambiotitular.Cells[21, 4] = nombre;
-                                                xcambiotitular.Cells[22, 4] = numero_documento;
-                                                xcambiotitular.Cells[23, 4] = codigo;
-                                                xcambiotitular.Cells[24, 5] = nombrenna;
-                                                x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DEL TITULAR " + nombre;
-                                                x.Cells[44, 1] = "CAMBIO DE TITULAR ";
-                                                sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
-                                                sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
-                                                excelcambiotitular.Quit();
-                                     
-                                }
-                                else if (DropDownList1.SelectedItem.Text == "CAMBIO DE GRUPO PROBLACIONAL")
-                                {
-
-                                    Microsoft.Office.Interop.Excel.Application excelcambiogrupos = new Microsoft.Office.Interop.Excel.Application();
-                                    Microsoft.Office.Interop.Excel.Workbook sheetcambiogrupoblacional = excelcambiogrupos.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambiogrupopoblacional.xlsx");
-                                    Microsoft.Office.Interop.Excel.Worksheet xcambiogrupos = excelcambiogrupos.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
-                                    x.Cells[14, 6] = "CAMBIO DE GRUPO POBLACIONAL POR SOLICITUD DEL TITULAR " + nombre;
-                                    x.Cells[44, 1] = "CAMBIO DE GRUPO POBLACIONAL";
-
-                                    sheetcambiogrupoblacional.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\cambio_grupo_poblacional");
-                                    sheetcambiogrupoblacional.Close(true, Type.Missing, Type.Missing);
-                                    excelcambiogrupos.Quit();
-                                }
-                                else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
-                                {
-                                    Microsoft.Office.Interop.Excel.Application exceltraslados = new Microsoft.Office.Interop.Excel.Application();
-                                    Microsoft.Office.Interop.Excel.Workbook sheettraslados = exceltraslados.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\traslado.xlsx");
-                                    Microsoft.Office.Interop.Excel.Worksheet xtraslados = exceltraslados.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
-                                    Excel.Range userRangetraslados = xtraslados.UsedRange;
-                                    int counrecordstraslados = userRangetraslados.Rows.Count;
-                                    int addtraslados = counrecordstraslados + 1;
-
-
-                                    x.Cells[15, 6] = "TRASLADO DE MUNICIPIO DE (" + TextBox9.Text + ") A BELEN DE LOS ANDAQUIES POR SOLICITUD DEL TITULAR";
-                                    x.Cells[44, 1] = "TRASLADO DE MUNICIPIO";
-
-                                    xtraslados.Cells[6, 6] = fecha_hoy;
-                                    xtraslados.Cells[15, 3] = "TRASLADO DE MUNICIPIO POR SOLICITUD DEL TITULAR";
-                                    xtraslados.Cells[21, 4] = nombre;
-                                    xtraslados.Cells[22, 4] = numero_documento;
-                                    xtraslados.Cells[23, 4] = codigo;
-                                    xtraslados.Cells[24, 4] = TextBox9.Text;
-                                    xtraslados.Cells[27, 3] = TextBox12.Text;
-                                    xtraslados.Cells[27, 7] = telefono;
-                                    xtraslados.Cells[38, 3] = numero_documento;
-                                    xtraslados.Cells[39, 3] = telefono;
-
-                                    if (vereda == "SIN VEREDA")
-                                    {
-
-                                        xtraslados.Cells[27, 5] = barrio;
-
-                                    }
-                                    else
-                                    {
-
-                                        xtraslados.Cells[27, 5] = vereda;
-
-                                    }
-
-                                    sheettraslados.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
-                                    sheettraslados.Close(true, Type.Missing, Type.Missing);
-                                    exceltraslados.Quit();
-                                }
-
-                                if (DropDownList1.SelectedItem.Text == "CAMBIO EN DATOS PERSONALES" || DropDownList1.SelectedItem.Text == "RETIRO_DE_BENEFICIARIO")
+                                if (DropDownList1.SelectedItem.Text == "CAMBIO EN DATOS PERSONALES" || DropDownList1.SelectedItem.Text == "RETIRO_DE_BENEFICIARIO" || DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
                                 {
                                     foreach (GridViewRow gridnna in GridView2.Rows)
                                     {
@@ -232,6 +159,100 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                             if (checkanna.Checked)
                                             {
                                                 nombrenna = ((Label)(gridnna.Cells[1].Controls[1])).Text;
+
+
+                                                if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
+                                                {
+                                                    Microsoft.Office.Interop.Excel.Application excelcambiotitular = new Microsoft.Office.Interop.Excel.Application();
+                                                    Microsoft.Office.Interop.Excel.Workbook sheetcambiotitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambio de titular.xlsx");
+                                                    Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
+
+                                                    xcambiotitular.Cells[6, 6] = fecha_hoy;
+                                                    xcambiotitular.Cells[21, 4] = nombre;
+                                                    xcambiotitular.Cells[22, 4] = numero_documento;
+                                                    xcambiotitular.Cells[23, 4] = codigo;
+                                                    xcambiotitular.Cells[24, 5] = nombrenna;
+                                                    xcambiotitular.Cells[24, 5] = nombrenna;
+
+                                                    if (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA")
+                                                    {
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA";
+
+                                                        if (DropDownList4.SelectedItem.Text == "PADRES BIOLOGICOS")
+                                                        {
+                                                            xcambiotitular.Cells[26, 2] = "Por solicitud del padre o madre biológica";
+                                                        }
+                                                        else if (DropDownList4.SelectedItem.Text == "TERCERO NUEVO TITULAR")
+                                                        {
+                                                            xcambiotitular.Cells[26, 2] = "tiene custodia del o los NNA inscritos en el programa ";
+                                                        }
+
+                                                    }
+
+                                                    sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
+                                                    sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
+                                                    excelcambiotitular.Quit();
+
+                                                }
+                                                else if (DropDownList1.SelectedItem.Text == "CAMBIO DE GRUPO PROBLACIONAL")
+                                                {
+
+                                                    Microsoft.Office.Interop.Excel.Application excelcambiogrupos = new Microsoft.Office.Interop.Excel.Application();
+                                                    Microsoft.Office.Interop.Excel.Workbook sheetcambiogrupoblacional = excelcambiogrupos.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\cambiogrupopoblacional.xlsx");
+                                                    Microsoft.Office.Interop.Excel.Worksheet xcambiogrupos = excelcambiogrupos.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
+
+                                                    x.Cells[14, 6] = "CAMBIO DE GRUPO POBLACIONAL POR SOLICITUD DEL TITULAR " + nombre;
+                                                    x.Cells[44, 1] = "CAMBIO DE GRUPO POBLACIONAL";
+
+                                                    sheetcambiogrupoblacional.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\cambio_grupo_poblacional");
+                                                    sheetcambiogrupoblacional.Close(true, Type.Missing, Type.Missing);
+                                                    excelcambiogrupos.Quit();
+                                                }
+                                                else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
+                                                {
+                                                    Microsoft.Office.Interop.Excel.Application exceltraslados = new Microsoft.Office.Interop.Excel.Application();
+                                                    Microsoft.Office.Interop.Excel.Workbook sheettraslados = exceltraslados.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\traslado.xlsx");
+                                                    Microsoft.Office.Interop.Excel.Worksheet xtraslados = exceltraslados.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
+
+                                                    Excel.Range userRangetraslados = xtraslados.UsedRange;
+                                                    int counrecordstraslados = userRangetraslados.Rows.Count;
+                                                    int addtraslados = counrecordstraslados + 1;
+
+
+                                                    x.Cells[15, 6] = "TRASLADO DE MUNICIPIO DE (" + TextBox9.Text + ") A BELEN DE LOS ANDAQUIES POR SOLICITUD DEL TITULAR";
+                                                    x.Cells[44, 1] = "TRASLADO DE MUNICIPIO";
+
+                                                    xtraslados.Cells[6, 6] = fecha_hoy;
+                                                    xtraslados.Cells[15, 3] = "TRASLADO DE MUNICIPIO POR SOLICITUD DEL TITULAR";
+                                                    xtraslados.Cells[21, 4] = nombre;
+                                                    xtraslados.Cells[22, 4] = numero_documento;
+                                                    xtraslados.Cells[23, 4] = codigo;
+                                                    xtraslados.Cells[24, 4] = TextBox9.Text;
+                                                    xtraslados.Cells[27, 3] = TextBox12.Text;
+                                                    xtraslados.Cells[27, 7] = telefono;
+                                                    xtraslados.Cells[38, 3] = numero_documento;
+                                                    xtraslados.Cells[39, 3] = telefono;
+
+                                                    if (vereda == "SIN VEREDA")
+                                                    {
+
+                                                        xtraslados.Cells[27, 5] = barrio;
+
+                                                    }
+                                                    else
+                                                    {
+
+                                                        xtraslados.Cells[27, 5] = vereda;
+
+                                                    }
+
+                                                    sheettraslados.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
+                                                    sheettraslados.Close(true, Type.Missing, Type.Missing);
+                                                    exceltraslados.Quit();
+                                                }
+
+
                                                 if (DropDownList2.SelectedItem.Text == "CAMBIO_FECHA_DE_NACIMIENTO")
                                                 {
                                                     x.Cells[17, 5] = "x";
@@ -432,9 +453,11 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             Microsoft.Office.Interop.Excel.Workbook sheettitular = excelcambiotitular.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + ".xlsx");
                             Microsoft.Office.Interop.Excel.Worksheet xcambiotitular = excelcambiotitular.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
                             xcambiotitular.PrintOut(1, true);
+                            x.PrintOut(1, true);
                             excelcambiotitular.Quit();
-                            cerrarSEGUNDOPLANO();
                             Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                            cerrarSEGUNDOPLANO();
+                            
                             //xcambiotitular.PrintPreview();
                             
                         }
@@ -549,8 +572,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDownList1.SelectedItem.Text == "CAMBIO EN DATOS PERSONALES")
-
+             if (DropDownList1.SelectedItem.Text == "CAMBIO EN DATOS PERSONALES")
             {
 
                 Label11.Visible = true;
@@ -562,7 +584,8 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
-                DropDownList2.Visible = false;
+                DropDownList3.Visible = false;
+
 
             }
             else if (DropDownList1.SelectedItem.Text == "TRASLADO DE MUNICIPIO")
@@ -576,7 +599,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                 Label10.Visible = false;
                 DropDownList2.Visible = false;
-                DropDownList2.Visible = false;
+                
             }
             else if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
 
@@ -590,22 +613,24 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 Label14.Visible = false;
                 TextBox9.Visible = false;
                 TextBox12.Visible = false;
-                DropDownList2.Visible = false;
+               
             }
-            if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
-
+            else if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
             {
 
-                Label11.Visible = false;
-                TextBox10.Visible = false;
-                Label10.Visible = false;
+                Label11.Visible = true;
+                TextBox10.Visible = true;
+                Label10.Visible = true;
                 DropDownList2.Visible = false;
                 GridView2.Visible = true;
                 Label9.Visible = false;
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
-                DropDownList2.Visible = true;
+                DropDownList3.Visible = true;
+                Label15.Visible = true;
+                DropDownList4.Visible = true;
+
             }
             //else
             //{
@@ -633,6 +658,9 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
             cargarFILTRO();
         }
+
+      
+    
     }
 
 }

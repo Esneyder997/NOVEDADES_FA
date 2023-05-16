@@ -76,16 +76,42 @@
                 </div>
 
             <div class="group">
-                <asp:Label ID="Label10" runat="server" Text="QUE TIPO SOLICITUD ?" Visible="False"></asp:Label>
+                <asp:Label ID="Label10" runat="server" Text="QUE TIPO SOLICITUD ?" Visible="true"></asp:Label>
                 <asp:DropDownList ID="DropDownList2" runat="server" Visible="False" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                     <asp:ListItem>__CAMBIO_DATOS_PERSONALES__</asp:ListItem>
                     <asp:ListItem>CAMBIO_DOCUMENTO</asp:ListItem>
                     <asp:ListItem>CAMBIO_FECHA_DE_NACIMIENTO</asp:ListItem>
                     <asp:ListItem>CAMBIO_DE_APELLIDOS</asp:ListItem>
-                </asp:DropDownList><asp:DropDownList runat="server">
-                    <asp:ListItem>__TIPO_CAMBIO_TITUTAL__</asp:ListItem>
+               
                 </asp:DropDownList>
+
+
+                <asp:DropDownList ID="DropDownList3" runat="server">
+                    <asp:ListItem>__CAMBIO:_TIPO_TITULAR__</asp:ListItem>
+                    <asp:ListItem>FALLECIMIENTO</asp:ListItem>
+                    <asp:ListItem>ENFERMEDA GRAVE O INVALIDEZ</asp:ListItem>
+                    <asp:ListItem>PRIVACION DE LIBERTAD</asp:ListItem>
+                    <asp:ListItem>DESAPARICION </asp:ListItem>
+                    <asp:ListItem>ABANDONO</asp:ListItem>
+                    <asp:ListItem>SOLICITUD OTRA PERSONAS NO INSCRITA</asp:ListItem>
+                    <asp:ListItem>SOLICITUD INSCRITO EN EL PROGRAMA </asp:ListItem>
+                </asp:DropDownList>
+
+
                 </div>
+
+
+            <div class="group">
+                
+                <asp:Label ID="Label15" runat="server" Text="Tipo Requisito" Visible="false"></asp:Label>
+                <asp:DropDownList ID="DropDownList4" runat="server">
+                    <asp:ListItem>TIPO_REQUISITO</asp:ListItem>
+                    <asp:ListItem>PADRES BIOLOGICOS</asp:ListItem>
+                    <asp:ListItem>TERCERO NUEVO TITULAR</asp:ListItem>
+                </asp:DropDownList>
+
+                </div>
+
 
                 <div class="group">
                    <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" ReadOnly="False" AutoPostBack="True"></asp:TextBox> 
