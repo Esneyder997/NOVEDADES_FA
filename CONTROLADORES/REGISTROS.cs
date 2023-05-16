@@ -48,7 +48,7 @@ namespace NOVEDADES_FA.CONTROLADORES
 
         public DataTable FILTROSnna()
         {
-            string sql = string.Format(@"SELECT ph.nombre_titular, ph.titular_id FROM NOVEDAD_PRINCIPAL AS ph INNER JOIN NOVEDAD_PRINCIPAL AS p ON ph.titular_id = p.titular_id WHERE ph.numero_documento LIKE '{0}%'", this.cedulanna, "ORDER by ph.nombre_titular");
+            string sql = string.Format(@"SELECT ph.nombre_titular,ph.numero_documento, ph.titular_id FROM NOVEDAD_PRINCIPAL AS ph INNER JOIN NOVEDAD_PRINCIPAL AS p ON ph.titular_id = p.titular_id WHERE ph.numero_documento LIKE '{0}%'", this.cedulanna, "ORDER by ph.nombre_titular, ph.numero_documento");
             DataTable tabla1 = cbd.Consultas(sql);
             return tabla1;
         }
