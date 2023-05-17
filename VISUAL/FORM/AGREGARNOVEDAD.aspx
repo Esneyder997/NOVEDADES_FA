@@ -108,8 +108,17 @@
                     <asp:ListItem>TIPO_REQUISITO</asp:ListItem>
                     <asp:ListItem>PADRES BIOLOGICOS</asp:ListItem>
                     <asp:ListItem>TERCERO NUEVO TITULAR</asp:ListItem>
+                    <asp:ListItem>FALLECIMIENTO</asp:ListItem>
+                    <asp:ListItem>ENFERMEDA GRAVE</asp:ListItem>
+                    <asp:ListItem>PRIVACION LIBERTAD</asp:ListItem>
+                    <asp:ListItem>DESAPARICION </asp:ListItem>
+                    <asp:ListItem>ABANDONO </asp:ListItem>
                 </asp:DropDownList>
 
+                <asp:DropDownList ID="DropDownList5" Visible="false" runat="server">
+                    <asp:ListItem>SELECCIONE_POBLACION</asp:ListItem>
+                    <asp:ListItem>SISBEN A DESPLAZADOS</asp:ListItem>
+                </asp:DropDownList>
                 </div>
 
 
