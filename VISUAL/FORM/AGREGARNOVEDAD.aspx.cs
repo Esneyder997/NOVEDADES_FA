@@ -48,12 +48,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 DropDownList1.DataTextField = "nombre_novedad";
                 DropDownList1.DataSource = tpN;
                 DropDownList1.DataBind();
-
-
-                Label10.Visible = false;
-                DropDownList2.Visible = false;
-                DropDownList3.Visible = false;
-                DropDownList4.Visible = false;
+ 
             }
         }
 
@@ -75,9 +70,6 @@ namespace NOVEDADES_FA.VISUAL.FORM
             Int64 telefono = 0;
             string nombrenna = "";
             int numero_documentonna = 0; 
-
-           
-
 
             if (DropDownList1.SelectedItem.Text == "SELECCIONE UNA OPCION")
             {
@@ -182,87 +174,61 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                                     xcambiotitular.Cells[24, 5] = nombrenna;
                                                     xcambiotitular.Cells[25, 2] = numero_documentonna;
 
-                                                    if (DropDownList3.SelectedItem.Text == "FALLECIMIENTO")
+                                                    if (DropDownList4.SelectedItem.Text == "FALLECIMIENTO")
                                                     {
 
                                                         x.Cells[13, 6] = "CAMBIO DE TITULAR POR FALLECIMIENTO DEL TITULAR-" + nombre;
                                                         x.Cells[44, 1] = "CAMBIO DE TITULAR POR FALLECIMIENTO DEL TITULAR";
+                                                        xcambiotitular.Cells[26, 2] = "el titular falleció";
 
                                                     }
-                                                    else if (DropDownList3.SelectedItem.Text == "ENFERMEDA GRAVE O INVALIDEZ")
+                                                    else if (DropDownList4.SelectedItem.Text == "ENFERMEDAD GRAVE O INVALIDEZ")
                                                     {
 
-                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR ENFERMEDA GRAVE DEL TITULAR-" + nombre;
-                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR ENFERMEDA GRAVE DEL TITULAR";
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR ENFERMEDAD GRAVE-" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR ENFERMEDAD GRAVE";
+                                                        xcambiotitular.Cells[26, 2] = "tiene una enfermedad grave ";
 
                                                     }
-                                                    else if(DropDownList3.SelectedItem.Text == "PRIVACION DE LIBERTAD")
+                                                    else if(DropDownList4.SelectedItem.Text == "PRIVACION DE LIBERTAD")
                                                     {
 
-                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR PRIVACION DE LIBERTAD DEL TITULAR-" + nombre;
-                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR ENFERMEDA GRAVE DEL TITULAR";
-
-                                                    }
-                                                    else if (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA")
-                                                    {
-
-                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA-" + nombre;
-                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA";
-
-                                                    }
-                                                    else if (DropDownList4.SelectedItem.Text == "PADRES BIOLOGICOS")
-                                                    {
-
-                                                        xcambiotitular.Cells[26, 2] = "Por solicitud del padre o madre biológica";
-
-                                                    }
-                                                    else if (DropDownList4.SelectedItem.Text == "TERCERO NUEVO TITULAR")
-                                                    {
-
-                                                        xcambiotitular.Cells[26, 2] = "tiene custodia del o los NNA inscritos en el programa ";
-
-                                                    }
-                                                    else if (DropDownList4.SelectedItem.Text == "FALLECIMIENTO")
-                                                    {
-
-                                                        xcambiotitular.Cells[26, 2] = "tiene registro civil defuncion y registro civil del nna padre biologico";
-
-                                                    }
-                                                    else if (DropDownList4.SelectedItem.Text == "ENFERMEDA GRAVE")
-                                                    {
-
-                                                        xcambiotitular.Cells[26, 2] =  "tiene enfermeda grave y por documento de custodia ";
-
-                                                    }
-                                                    else  if (DropDownList4.SelectedItem.Text== "PRIVACION LIBERTAD")
-                                                    {
-
-                                                        xcambiotitular.Cells[26, 2] = "tiene privacion de la libertad ";
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR PRIVACION DE LIBERTAD-" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR PRIVACION DE LIBERTAD";
+                                                        xcambiotitular.Cells[26, 2] = "el titular tiene privación de libertad";
 
                                                     }
                                                     else if (DropDownList4.SelectedItem.Text== "DESAPARICION ")
                                                     {
 
-                                                        xcambiotitular.Cells[26, 2] = "tiene privacion de la libertad";
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR DESAPARICION-" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR DESAPARICION";
+                                                        xcambiotitular.Cells[26, 2] = "tiene privación de la libertad";
 
                                                     }
                                                     else if (DropDownList4.SelectedItem.Text == "ABANDONO")
                                                     {
 
-                                                        xcambiotitular.Cells[26, 2] = "tiene la custodia y cuidado personal";
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR ABANDONO-" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR ABANDONO";
+                                                        xcambiotitular.Cells[26, 2] = "abandono de los NNA y por custodia y cuidado personal";
 
                                                     }
+                                                    else if (DropDownList4.SelectedItem.Text == "PERSONA NO INSCRITA" || DropDownList4.SelectedItem.Text == "PERSONA INSCRITA")
+                                                    {
 
+                                                        x.Cells[13, 6] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA-" + nombre;
+                                                        x.Cells[44, 1] = "CAMBIO DE TITULAR POR SOLICITUD DE UNA PERSONA NO INSCRITA";
+                                                        xcambiotitular.Cells[26, 2] = "es madre o padre biológico con custodia otorgada";
 
+                                                    }
+                                                    
                                                      sheetcambiotitular.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
                                                      sheetcambiotitular.Close(true, Type.Missing, Type.Missing);
                                                      excelcambiotitular.Quit();
 
                                                 }
-                                                else 
-
-
-                                                if (DropDownList2.SelectedItem.Text == "CAMBIO_FECHA_DE_NACIMIENTO")
+                                                else if (DropDownList2.SelectedItem.Text == "CAMBIO_FECHA_DE_NACIMIENTO")
                                                 {
                                                     x.Cells[17, 5] = "x";
                                                     x.Cells[17, 6] = "CAMBIO FECHA DE NACIMIENTO POR SOLICITUD DEL TITULAR:" + nombrenna;
@@ -286,32 +252,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                                     x.Cells[44, 7] = nombrenna;
 
                                                 }
-
-                                                if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
-                                                {
-
-                                                    Microsoft.Office.Interop.Excel.Application excelretiros = new Microsoft.Office.Interop.Excel.Application();
-                                                    Microsoft.Office.Interop.Excel.Workbook sheetretiros = excelretiros.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\retiros.xlsx");
-                                                    Microsoft.Office.Interop.Excel.Worksheet xretiros = excelretiros.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
-
-                                                    x.Cells[19, 5] = "X";
-                                                    x.Cells[19, 6] = "RETIRO DE BENEFICIARIO POR SOLICITUD DEL TITULAR:" + nombrenna;
-                                                    x.Cells[44, 1] = "RETIRO DE BENEFICIARIO";
-                                                    x.Cells[44, 7] = nombrenna;
-
-                                                    xretiros.Cells[6, 6] = fecha_hoy;
-                                                    xretiros.Cells[21, 4] = nombre;
-                                                    xretiros.Cells[22, 4] = numero_documento;
-                                                    xretiros.Cells[23, 4] = codigo;
-                                                    xretiros.Cells[38, 3] = numero_documento;
-                                                    xretiros.Cells[39, 3] = telefono;
-                                                    xretiros.Cells[24, 4] = nombrenna;
-
-                                                    sheetretiros.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
-                                                    sheetretiros.Close(true, Type.Missing, Type.Missing);
-                                                    excelretiros.Quit();
-
-                                                }
+                                              
                                             }
                                         }
                                     }
@@ -327,13 +268,17 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                     x.Cells[14, 6] = "CAMBIO DE GRUPO POBLACIONAL POR SOLICITUD DEL TITULAR " + nombre;
                                     x.Cells[44, 1] = "CAMBIO DE GRUPO POBLACIONAL";
 
+                                    xcambiogrupos.Cells[21, 4] = fecha_hoy;
+                                    xcambiogrupos.Cells[21, 4] = nombre;
+                                    xcambiogrupos.Cells[22, 4] = numero_documento;
+                                    xcambiogrupos.Cells[23, 4] = codigo;
+
                                     if (DropDownList5.SelectedItem.Text == "SISBEN A DESPLAZADOS")
                                     {
 
                                         xcambiogrupos.Cells[24, 5] = "SISBEN";
                                         xcambiogrupos.Cells[24, 7] = "DESPLAZADO";
                                         xcambiogrupos.Cells[25, 5] = "SISBEN";
-
 
                                     }
 
@@ -407,6 +352,31 @@ namespace NOVEDADES_FA.VISUAL.FORM
                                     sheetretirosnucleo.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
                                     sheetretirosnucleo.Close(true, Type.Missing, Type.Missing);
                                     excelretirosnucleo.Quit();
+                                } 
+                                else if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
+                                {
+
+                                    Microsoft.Office.Interop.Excel.Application excelretiros = new Microsoft.Office.Interop.Excel.Application();
+                                    Microsoft.Office.Interop.Excel.Workbook sheetretiros = excelretiros.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS\\retiros.xlsx");
+                                    Microsoft.Office.Interop.Excel.Worksheet xretiros = excelretiros.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
+
+                                    x.Cells[19, 5] = "X";
+                                    x.Cells[19, 6] = "RETIRO DE BENEFICIARIO POR SOLICITUD DEL TITULAR:" + nombrenna;
+                                    x.Cells[44, 1] = "RETIRO DE BENEFICIARIO";
+                                    x.Cells[44, 7] = nombrenna;
+
+                                    xretiros.Cells[6, 6] = fecha_hoy;
+                                    xretiros.Cells[21, 4] = nombre;
+                                    xretiros.Cells[22, 4] = numero_documento;
+                                    xretiros.Cells[23, 4] = codigo;
+                                    xretiros.Cells[38, 3] = numero_documento;
+                                    xretiros.Cells[39, 3] = telefono;
+                                    xretiros.Cells[24, 4] = nombrenna;
+
+                                    sheetretiros.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + "");
+                                    sheetretiros.Close(true, Type.Missing, Type.Missing);
+                                    excelretiros.Quit();
+
                                 }
 
                                 sheet.SaveAs("Z:\\FAMILIAS EN ACCION SISTEMA\\NOVEDADES\\" + numero_documento + "");
@@ -562,7 +532,8 @@ namespace NOVEDADES_FA.VISUAL.FORM
                             Microsoft.Office.Interop.Excel.Workbook sheetretirosnucleo = excelretirosnucleo.Workbooks.Open("Z:\\FAMILIAS EN ACCION SISTEMA\\OFICIOS GENERADS\\" + numero_documento + ".xlsx");
                             Microsoft.Office.Interop.Excel.Worksheet xcambioretirosnucleo = excelretirosnucleo.ActiveSheet as Microsoft.Office.Interop.Excel.Worksheet;
                             xcambioretirosnucleo.PrintOut(1, true);
-                            excelretirosnucleo.Quit(); x.PrintOut(1, true);
+                            x.PrintOut(1, true);
+                            excelretirosnucleo.Quit();
                             cerrarSEGUNDOPLANO();
                             Page.Response.Redirect(Page.Request.Url.ToString(), true);
 
@@ -663,7 +634,7 @@ namespace NOVEDADES_FA.VISUAL.FORM
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
-                DropDownList3.Visible = false;
+                
 
                 Label15.Visible = false;
                 DropDownList4.Visible = false;
@@ -687,31 +658,37 @@ namespace NOVEDADES_FA.VISUAL.FORM
             else if (DropDownList1.SelectedItem.Text == "RETIRO DE BENEFICIARIO")
 
             {
+
                 Label11.Visible = true;
                 TextBox10.Visible = true;
-                Label10.Visible = true;
-                DropDownList2.Visible = true;
-                GridView2.Visible = true;
-                Label9.Visible = false;
-                Label14.Visible = false;
-                TextBox9.Visible = false;
-                TextBox12.Visible = false;
-                DropDownList5.Visible = false;
 
+
+
+                DropDownList2.Visible = false;
+                Label10.Visible = false;
+                
+                DropDownList4.Visible = false;
+                DropDownList5.Visible = false;
+                Label15.Visible = false;
+                GridView1.Visible = true;
+
+                GridView2.Visible = true;
             }
             else if (DropDownList1.SelectedItem.Text == "CAMBIO DE TITULAR")
             {
 
                 Label11.Visible = true;
                 TextBox10.Visible = true;
-                Label10.Visible = true;
+                Label10.Visible = false;
                 DropDownList2.Visible = false;
                 GridView2.Visible = true;
                 Label9.Visible = false;
                 TextBox9.Visible = false;
                 Label14.Visible = false;
                 TextBox12.Visible = false;
-                DropDownList3.Visible = true;
+               
+
+
                 Label15.Visible = true;
                 DropDownList4.Visible = true;
 
@@ -729,7 +706,6 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
                 DropDownList2.Visible = false;
                 Label10.Visible = false;
-                DropDownList3.Visible = false;
                 DropDownList4.Visible = false;
                 DropDownList5.Visible = true;
                 Label15.Visible = true;
@@ -762,22 +738,5 @@ namespace NOVEDADES_FA.VISUAL.FORM
 
             cargarFILTRO();
         }
-
-        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            Button3.Visible = (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA") ? true : false;
-
-
-            //if (DropDownList3.SelectedItem.Text == "SOLICITUD OTRA PERSONAS NO INSCRITA")
-            //{
-            //    Button3.Visible = true;
-            //}
-            //else
-            //{
-            //    Button3.Visible = false;
-            //}
-        }
     }
-
 }
